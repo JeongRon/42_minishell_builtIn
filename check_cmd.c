@@ -14,6 +14,7 @@
 
 void	check_cmd(char **cmd, t_env_var *env_var)
 {
+	// $[KEY] cmd -> 모두 변환한 후, start
 	if (ft_strcmp(cmd[0], "env") == 0)
 		env_var->status = start_env(cmd, env_var);
 	else if (ft_strcmp(cmd[0], "pwd") == 0)
@@ -27,7 +28,8 @@ void	check_cmd(char **cmd, t_env_var *env_var)
 	else if (ft_strcmp(cmd[0], "exit") == 0)
 	{
 		env_var->status = start_exit(cmd, env_var);
-		//
-		printf("satus value: %d\n", env_var->status);
+		// printf("satus value: %d\n", env_var->status);
 	}
+	else if (ft_strcmp(cmd[0], "cd") == 0)
+		env_var->status = start_cd(cmd, env_var);
 }

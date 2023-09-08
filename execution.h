@@ -25,6 +25,7 @@
 typedef struct s_env_var
 {
 	char	**path;
+	char	*home;
 	char	**env;
 	char	**exp;
 	int		env_cnt;
@@ -48,6 +49,8 @@ int		start_export(char **cmd, t_env_var *env_var);
 void 	print_exp(t_env_var *env_var);
 void 	del_env(char *cmd, t_env_var *env_var);
 void 	del_exp(char *cmd, t_env_var *env_var);
+int		check_dup(char **arr, char *cmd, int flag);
+
 // unset.c
 int		start_unset(char **cmd, t_env_var *env_var);
 void	search_unset(char *cmd, t_env_var *env_var);
@@ -55,6 +58,8 @@ void	search_unset(char *cmd, t_env_var *env_var);
 int		start_echo(char **cmd, t_env_var *env_var);
 // exit.c
 int		start_exit(char **cmd, t_env_var *env_var);
+// cd.c
+int		start_cd(char **cmd, t_env_var *env_var);
 
 // utils.c
 size_t	ft_strlen(const char *str);

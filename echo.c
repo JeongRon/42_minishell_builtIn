@@ -79,7 +79,10 @@ int		start_echo(char **cmd, t_env_var *env_var)
 	status = 0;
 	search_echo_flag(cmd, &option_flag, &start_flag);
 	if (start_flag == 0)
-		printf("\n");
+	{
+		if (option_flag == 0)
+			printf("\n");
+	}
 	else
 		print_echo(cmd, option_flag, start_flag);
 	return (status);

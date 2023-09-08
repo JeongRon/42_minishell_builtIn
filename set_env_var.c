@@ -32,6 +32,15 @@ static int	check_path(char *envp)
 	return (FAIL);
 }
 
+static int	check_home(char *envp)
+{
+	if (envp[0] == 'H' && envp[1] == 'O' 
+		&& envp[2] == 'M' && envp[3] == 'E'
+		&& envp[4] == '=')
+		return (SUCCESS);
+	return (FAIL);
+}
+
 static int	fill_env_exp(t_env_var *env_var, char **envp, int i)
 {
 	env_var->env[i] = ft_strdup(envp[i]);
@@ -44,6 +53,12 @@ static int	fill_env_exp(t_env_var *env_var, char **envp, int i)
 	{
 		env_var->path = ft_split(&envp[i][5], ':');
 		if (!env_var->path)
+			return (FAIL);
+	}
+	if (check_home(envp[i]))
+	{
+		env_var->home = ft_strdup(&envp[i][5]);
+		if (!env_var->home)
 			return (FAIL);
 	}
 	return (SUCCESS);

@@ -20,7 +20,7 @@ int	main(int ac, char **av, char **envp)
 	if (set_env_var(&env_var, envp) == 0)
 		return (0);
 	// 파싱 임시 처리
-	char *cmd[] = {"exit", "-9223372036854775809", NULL};
+	char *cmd[] = {"echo", "-n", NULL};
 	// 파이프 체크
 	// 명령어 처리
 	check_cmd(cmd, &env_var);
