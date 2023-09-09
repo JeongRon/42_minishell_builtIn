@@ -6,13 +6,13 @@
 /*   By: jeongrol <jeongrol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 14:06:30 by jeongrol          #+#    #+#             */
-/*   Updated: 2023/09/04 20:32:12 by jeongrol         ###   ########.fr       */
+/*   Updated: 2023/09/09 14:35:42 by jeongrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execution.h"
 
-static int allocate_env_exp(t_env_var *env_var, int cnt)
+static int	allocate_env_exp(t_env_var *env_var, int cnt)
 {
 	env_var->env = (char **)malloc(sizeof(char *) * (cnt + 1));
 	if (!env_var->env)
@@ -25,16 +25,16 @@ static int allocate_env_exp(t_env_var *env_var, int cnt)
 
 static int	check_path(char *envp)
 {
-	if (envp[0] == 'P' && envp[1] == 'A' 
+	if (envp[0] == 'P' && envp[1] == 'A'
 		&& envp[2] == 'T' && envp[3] == 'H'
 		&& envp[4] == '=')
 		return (SUCCESS);
 	return (FAIL);
 }
 
-static int	check_home(char *envp)
+int	check_home(char *envp)
 {
-	if (envp[0] == 'H' && envp[1] == 'O' 
+	if (envp[0] == 'H' && envp[1] == 'O'
 		&& envp[2] == 'M' && envp[3] == 'E'
 		&& envp[4] == '=')
 		return (SUCCESS);

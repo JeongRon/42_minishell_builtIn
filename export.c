@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeongron <jeongron@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jeongrol <jeongrol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 16:56:17 by jeongrol          #+#    #+#             */
-/*   Updated: 2023/09/06 17:48:25 by jeongron         ###   ########.fr       */
+/*   Updated: 2023/09/09 17:16:10 by jeongrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,7 @@ void del_env(char *cmd, t_env_var *env_var)
 	char	*cmd_key;
 	char	*env_key;
 	int		i;
-	
+
 	cmd_key = key_strdup(cmd);
 	i = -1;
 	while (env_var->env[++i])
@@ -194,7 +194,7 @@ void del_exp(char *cmd, t_env_var *env_var)
 	char	*cmd_key;
 	char	*exp_key;
 	int		i;
-	
+
 	cmd_key = key_strdup(cmd);
 	i = -1;
 	while (env_var->exp[++i])
@@ -218,7 +218,7 @@ int	check_dup(char **arr, char *cmd, int flag)
 	char	*arr_key;
 	int		dup_flag;
 	int		i;
-	
+
 	cmd_key = key_strdup(cmd);
 	dup_flag = 0;
 	i = -1;
