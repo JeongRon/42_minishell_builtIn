@@ -6,7 +6,7 @@
 /*   By: jeongrol <jeongrol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 14:03:05 by jeongrol          #+#    #+#             */
-/*   Updated: 2023/09/09 17:28:15 by jeongrol         ###   ########.fr       */
+/*   Updated: 2023/09/09 18:29:57 by jeongrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,11 @@ int		ft_two_strlen(char **str);
 char	*ft_strdup(const char *src);
 char	*ft_exp_strdup(const char *src);
 int		ft_strcmp(const char *s1, const char *s2);
-void 	ft_free(char **str);
+void	ft_free(char **str);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
-long long	ft_atoi(const char *str);
 char	*ft_strjoin(char const *s1, char const *s2);
-
+long long	ft_atoi(const char *str);
 // split.c
 char	**ft_split(char const *s, char c);
 

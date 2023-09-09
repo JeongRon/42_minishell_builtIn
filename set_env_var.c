@@ -6,7 +6,7 @@
 /*   By: jeongrol <jeongrol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 14:06:30 by jeongrol          #+#    #+#             */
-/*   Updated: 2023/09/09 14:35:42 by jeongrol         ###   ########.fr       */
+/*   Updated: 2023/09/09 18:19:52 by jeongrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static int	fill_env_exp(t_env_var *env_var, char **envp, int i)
 	return (SUCCESS);
 }
 
-int set_env_var(t_env_var *env_var, char **envp)
+int	set_env_var(t_env_var *env_var, char **envp)
 {
 	int	i;
 	int	env_cnt;
@@ -84,6 +84,6 @@ int set_env_var(t_env_var *env_var, char **envp)
 	env_var->exp_cnt = env_cnt;
 	env_var->status = 0;
 	sort_exp(env_var);
-	// OLDPWD export 추가 
+	add_exp("OLDPWD", env_var);
 	return (1);
 }

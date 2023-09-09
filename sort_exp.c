@@ -6,14 +6,14 @@
 /*   By: jeongrol <jeongrol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 14:15:21 by jeongrol          #+#    #+#             */
-/*   Updated: 2023/09/04 20:22:06 by jeongrol         ###   ########.fr       */
+/*   Updated: 2023/09/09 18:27:53 by jeongrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execution.h"
 
 // 선택 정렬
-void sort_exp(t_env_var *env_var)
+void	sort_exp(t_env_var *env_var)
 {
 	int		i;
 	int		next;
@@ -37,13 +37,13 @@ void sort_exp(t_env_var *env_var)
 		if (i == env_var->exp_cnt - 1)
 		{
 			exp_tmp[i] = ft_strdup(env_var->exp[catch]);
-			break;
+			break ;
 		}
 		next = catch;
 		while (++next < env_var->exp_cnt)
 		{
 			if (!env_var->exp[next])
-				continue;
+				continue ;
 			else if (ft_strcmp(env_var->exp[catch], env_var->exp[next]) > 0)
 				catch = next;
 		}

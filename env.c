@@ -6,7 +6,7 @@
 /*   By: jeongrol <jeongrol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 16:08:27 by jeongrol          #+#    #+#             */
-/*   Updated: 2023/09/04 19:50:20 by jeongrol         ###   ########.fr       */
+/*   Updated: 2023/09/09 18:07:20 by jeongrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int	start_env(char **cmd, t_env_var *env_var)
 	if (cmd_cnt >= 2)
 	{
 		printf("env: %s: No such file or directory\n", cmd[1]);
-		return(127);
+		return (127);
 	}
 	print_env(env_var);
-	return(0);
+	return (0);
 }

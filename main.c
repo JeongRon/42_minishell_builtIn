@@ -6,7 +6,7 @@
 /*   By: jeongrol <jeongrol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 14:05:15 by jeongrol          #+#    #+#             */
-/*   Updated: 2023/09/09 17:39:29 by jeongrol         ###   ########.fr       */
+/*   Updated: 2023/09/09 18:01:04 by jeongrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,11 @@ int	main(int ac, char **av, char **envp)
 {
 	t_env_var	env_var;
 
-	// env_var 채우기
 	if (set_env_var(&env_var, envp) == 0)
 		return (0);
 	// 파싱 임시 처리
-	char *cmd[] = {"cd", "..", NULL};
-	// 파이프 체크
-	// 명령어 처리
+	char *cmd[] = {"cd", "erroror", NULL};
+	check_cmd(cmd, &env_var);
 	// <====================TEST=====================>
 	// printf("-------------exp-------------------\n");
 	// print_exp(&env_var);

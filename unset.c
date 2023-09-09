@@ -7,7 +7,7 @@ void	search_unset(char *cmd, t_env_var *env_var)
 	del_exp(cmd, env_var);
 }
 
-int		start_unset(char **cmd, t_env_var *env_var)
+int	start_unset(char **cmd, t_env_var *env_var)
 {
 	int	cnt;
 	int	status;

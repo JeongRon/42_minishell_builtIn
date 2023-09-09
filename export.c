@@ -6,13 +6,13 @@
 /*   By: jeongrol <jeongrol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 16:56:17 by jeongrol          #+#    #+#             */
-/*   Updated: 2023/09/09 17:16:10 by jeongrol         ###   ########.fr       */
+/*   Updated: 2023/09/09 18:18:09 by jeongrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execution.h"
 
-void print_exp(t_env_var *env_var)
+void	print_exp(t_env_var *env_var)
 {
 	int	i;
 
@@ -24,9 +24,9 @@ void print_exp(t_env_var *env_var)
 	}
 }
 
-void add_exp(char *cmd, t_env_var *env_var)
+void	add_exp(char *cmd, t_env_var *env_var)
 {
-	char 	**tmp;
+	char	**tmp;
 	int		i;
 
 	env_var->exp_cnt += 1;
@@ -47,7 +47,7 @@ void add_exp(char *cmd, t_env_var *env_var)
 	sort_exp(env_var);
 }
 
-void add_env(char *cmd, t_env_var *env_var)
+void	add_env(char *cmd, t_env_var *env_var)
 {
 	char	**tmp;
 	int		i;
@@ -87,11 +87,11 @@ int	find_equals_flag(char *cmd)
 	return (flag);
 }
 
-char *key_strdup(char *str)
+char	*key_strdup(char *str)
 {
 	int		key_len;
 	int		i;
-	char 	*tmp;
+	char	*tmp;
 
 	key_len = 0;
 	i = -1;
@@ -99,19 +99,19 @@ char *key_strdup(char *str)
 	{
 		if (str[i] == '=')
 			break ;
-		key_len++;		
+		key_len++;
 	}
 	tmp = (char *)malloc(sizeof(char) * (key_len + 1));
 	if (!tmp)
 		perror("MALLOC");
 	i = -1;
-	while(++i < key_len)
+	while (++i < key_len)
 		tmp[i] = str[i];
-	tmp[i] = '\0';	
+	tmp[i] = '\0';
 	return (tmp);
 }
 
-void del_env_key(int del_index, t_env_var *env_var)
+void	del_env_key(int del_index, t_env_var *env_var)
 {
 	char	**tmp;
 	int		x;
@@ -128,7 +128,7 @@ void del_env_key(int del_index, t_env_var *env_var)
 		if (x == del_index)
 		{
 			x++;
-			continue;
+			continue ;
 		}
 		tmp[y] = ft_strdup(env_var->env[x]);
 		x++;
@@ -139,7 +139,7 @@ void del_env_key(int del_index, t_env_var *env_var)
 	env_var->env = tmp;
 }
 
-void del_env(char *cmd, t_env_var *env_var)
+void	del_env(char *cmd, t_env_var *env_var)
 {
 	char	*cmd_key;
 	char	*env_key;
@@ -161,7 +161,7 @@ void del_env(char *cmd, t_env_var *env_var)
 	free(cmd_key);
 }
 
-void del_exp_key(int del_index, t_env_var *env_var)
+void	del_exp_key(int del_index, t_env_var *env_var)
 {
 	char	**tmp;
 	int		x;
@@ -178,7 +178,7 @@ void del_exp_key(int del_index, t_env_var *env_var)
 		if (x == del_index)
 		{
 			x++;
-			continue;
+			continue ;
 		}
 		tmp[y] = ft_strdup(env_var->exp[x]);
 		x++;
@@ -189,7 +189,7 @@ void del_exp_key(int del_index, t_env_var *env_var)
 	env_var->exp = tmp;
 }
 
-void del_exp(char *cmd, t_env_var *env_var)
+void	del_exp(char *cmd, t_env_var *env_var)
 {
 	char	*cmd_key;
 	char	*exp_key;
@@ -245,38 +245,29 @@ void	search_export(char *cmd, t_env_var *env_var)
 	int		equals_flag;
 	int		env_dup_flag;
 	int		exp_dup_flag;
-	int		i;
-	
+
 	equals_flag = find_equals_flag(cmd);
 	env_dup_flag = check_dup(env_var->env, cmd, 1);
 	exp_dup_flag = check_dup(env_var->exp, cmd, 0);
-	printf("-------------------------------\n");
-	printf("equals_flag: %d\n", equals_flag);
-	printf("env_dup_flag: %d\n", env_dup_flag);
-	printf("exp_dup_flag: %d\n", exp_dup_flag);
-	printf("-------------------------------\n");
 	if (equals_flag == 0 && env_dup_flag == 0 && exp_dup_flag == 0)
 		add_exp(cmd, env_var);
-	else if (equals_flag == 1)
+	else if (equals_flag == 1 && env_dup_flag == 0 && exp_dup_flag == 0)
 	{
-		if (env_dup_flag == 0 && exp_dup_flag == 0)
-		{
-			add_env(cmd, env_var);
-			add_exp(cmd, env_var);
-		}
-		else if (env_dup_flag == 0 && exp_dup_flag == 1)
-		{
-			add_env(cmd, env_var);
-			del_exp(cmd, env_var);
-			add_exp(cmd, env_var);
-		}
-		else if (env_dup_flag == 1)
-		{
-			del_env(cmd, env_var);
-			del_exp(cmd, env_var);
-			add_env(cmd, env_var);
-			add_exp(cmd, env_var);
-		}
+		add_env(cmd, env_var);
+		add_exp(cmd, env_var);
+	}
+	else if (equals_flag == 1 && env_dup_flag == 0 && exp_dup_flag == 1)
+	{
+		add_env(cmd, env_var);
+		del_exp(cmd, env_var);
+		add_exp(cmd, env_var);
+	}
+	else if (equals_flag == 1 && env_dup_flag == 1)
+	{
+		del_env(cmd, env_var);
+		del_exp(cmd, env_var);
+		add_env(cmd, env_var);
+		add_exp(cmd, env_var);
 	}
 }
 

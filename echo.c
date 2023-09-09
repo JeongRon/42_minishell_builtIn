@@ -1,10 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   echo.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jeongrol <jeongrol@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/09 18:02:40 by jeongrol          #+#    #+#             */
+/*   Updated: 2023/09/09 18:07:11 by jeongrol         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "execution.h"
 
-// 옵션에 따라 print 
 void	print_echo(char **cmd, int opt, int index)
 {
-	int last_index;
+	int	last_index;
 
 	last_index = ft_two_strlen(cmd) - 1;
 	while (cmd[index])
@@ -34,7 +44,7 @@ int	search_option(char *cmd)
 		while (cmd[++i])
 		{
 			if (cmd[i] == 'n')
-				continue;
+				continue ;
 			else
 			{
 				return_flag = 0;
@@ -66,8 +76,7 @@ void	search_echo_flag(char **cmd, int *opt, int *start)
 	}
 }
 
-
-int		start_echo(char **cmd, t_env_var *env_var)
+int	start_echo(char **cmd, t_env_var *env_var)
 {
 	int		option_flag;
 	int		start_flag;
